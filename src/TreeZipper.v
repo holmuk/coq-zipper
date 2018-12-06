@@ -161,12 +161,19 @@ End AType.
 Module NAremover := (NthInserterRemover AType).
 Import NAremover.
 
+Definition MoveTopAction (T: Tree) (Zop: Context) : Tree :=
+  match Zop with
+  | T_move n a l =>
+    T_tr a (nth_insert n l T)
+  end.
+
 Definition MoveTop (Z: ZipperTree) :=
   match (snd Z) with
   | [] => Z
   | h::t => match h with
     | T_move n a l =>
-      pair (T_tr a (nth_insert n l (fst Z))) t
+      pair (MoveTopAction (fst Z) h) t
+      (* pair (T_tr a (nth_insert n l (fst Z))) t *)
     end
   end.
 
@@ -193,7 +200,7 @@ Definition CorrectMoveTopConditions (Z: ZipperTree) :=
   (snd Z) <> [].
 
 Hint Unfold CorrectMoveTopConditions CorrectMoveDownConditions : t_unfold.
-Hint Unfold MoveTop MoveDown TreeToZipper ZipperTree NodesOf : t_unfold.
+Hint Unfold MoveTop MoveDown MoveTopAction TreeToZipper ZipperTree NodesOf : t_unfold.
 
 Lemma MoveTopDown: forall D Z,
   CorrectMoveDownConditions D Z ->
@@ -211,5 +218,86 @@ Proof.
     simpl. rewrite nth_insert_remove; auto.
   - destruct c; simpl. exfalso. apply H; auto.
 Qed.
+
+Definition Modify (Z: ZipperTree) (f: Tree -> Tree) : ZipperTree :=
+  pair (f (fst Z)) (snd Z).
+
+Definition ZipperToTree (Z: ZipperTree) : Tree :=
+  fold_left MoveTopAction (snd Z) (fst Z).
+
+Hint Unfold Modify ZipperToTree : t_unfold.
+
+Lemma ZipToTreeIdentity: forall T,
+  ZipperToTree (TreeToZipper T) = T.
+Proof.
+  auto.
+Qed.
+
+Lemma MoveTop_TreeInvariance: forall Z,
+  ZipperToTree Z = ZipperToTree (MoveTop Z).
+Proof.
+  destruct Z as (t, l), l as [|h]; [|destruct h]; simpl in *; auto.
+Qed.
+
+Lemma MoveDown_TreeInvariance: forall D Z,
+  CorrectMoveDownConditions D Z ->
+  ZipperToTree (MoveDown D Z) = ZipperToTree Z.
+Proof.
+  autounfold with t_unfold in *; destruct Z as (t, l), t, l;
+    simpl; auto; intros.
+  - remember H as H' eqn:Ge; clear Ge.
+    apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R; simpl; auto.
+    rewrite nth_insert_remove; auto.
+  - remember H as H' eqn:Ge; clear Ge.
+    apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R; simpl; auto.
+    rewrite nth_insert_remove; auto.
+Qed.
+
+Lemma Modify_Identity: forall Z,
+  Modify Z (fun t => t) = Z.
+Proof.
+  destruct Z; auto.
+Qed.
+
+Lemma Context_Modify: forall Z f,
+  f (fst Z) = fst (Modify Z f).
+Proof.
+  auto.
+Qed.
+
+(* Property *)
+
+Inductive PropertyOverTree : (Tree -> Prop) -> Tree -> Prop :=
+  | P_nil: forall (P: Tree -> Prop),
+    P T_nil -> PropertyOverTree P T_nil
+  | P_tree: forall P a l,
+    P (T_tr a l) /\ (forall T', In T' l -> (PropertyOverTree P T')) ->
+    PropertyOverTree P (T_tr a l).
+
+Hint Constructors PropertyOverTree.
+
+Lemma MoveTopActionNotNil: forall T Zop,
+  MoveTopAction T Zop <> T_nil.
+Proof.
+  destruct T, Zop; unfold not; intro; discriminate.
+Qed.
+
+Lemma ZipperToTreeNotNil: forall l t,
+  t <> T_nil /\ l <> [] ->
+  ZipperToTree (t, l) <> T_nil.
+Proof.
+  Admitted.
+
+Lemma ZipperPreserveProperty: forall P T,
+  PropertyOverTree P T ->
+  (forall Z, ZipperToTree Z = T -> PropertyOverTree P (fst Z)).
+Proof.
+  intros. induction H.
+  - destruct Z as (t, l), t, l; simpl in *; auto.
+    inversion H0.
+    destruct c; simpl in H0. unfold ZipperToTree in H0. simpl in H0.
+    destruct l; simpl in *. discriminate.
+    unfold MoveTopAction in H0.
+  Admitted.
 
 End TreeZipper.
