@@ -342,6 +342,28 @@ Proof.
     contradiction.
 Qed.
 
+Ltac dataDerive :=
+  (match goal with
+  |H: DataIsOfType _ _ _ |- _ => inversion H as []; subst; unfold_local
+  end).
+
+Lemma mfm: forall n,
+  DataIsOfType [] (myNat y) n ->
+  DataIsOfType [] (myNat y) (mySuc n).
+Proof.
+  intros.
+  repeat constructor; intuition.
+  do 4 dataDerive; try ndestruct; intuition.
+Qed.
+
+Ltac absurd_inversion :=
+  match goal with
+  | H: ?x = ?y |- _ => match type of x with
+    | RegularType => match type of y with | t => inversion H | _ => idtac end
+    | _ => idtac
+    end
+  end.
+
 Lemma myList_cons_one: forall xs,
   x <> y ->
   DataIsOfType [] (myNat y) xs ->
