@@ -7,6 +7,8 @@ Import QcDefaultNotation. Open Scope qc_scope.
 Import GenLow GenHigh.
 
 Require Import Coq.Structures.Equalities.
+Require Import Coq.Wellfounded.Wellfounded.
+Require Import Coq.Arith.Wf_nat.
 
 Module NthInserterRemover (Import T : Typ).
 
@@ -267,15 +269,6 @@ Qed.
 
 (* Property *)
 
-Inductive PropertyOverTree : (Tree -> Prop) -> Tree -> Prop :=
-  | P_nil: forall (P: Tree -> Prop),
-    P T_nil -> PropertyOverTree P T_nil
-  | P_tree: forall P a l,
-    P (T_tr a l) /\ (forall T', In T' l -> (PropertyOverTree P T')) ->
-    PropertyOverTree P (T_tr a l).
-
-Hint Constructors PropertyOverTree.
-
 Lemma MoveTopActionNotNil: forall T Zop,
   MoveTopAction T Zop <> T_nil.
 Proof.
@@ -283,21 +276,92 @@ Proof.
 Qed.
 
 Lemma ZipperToTreeNotNil: forall l t,
-  t <> T_nil /\ l <> [] ->
+  t <> T_nil \/ l <> [] ->
   ZipperToTree (t, l) <> T_nil.
 Proof.
-  Admitted.
+  unfold ZipperToTree; simpl. intro;
+  induction l using (induction_ltof1 _ (@length _)).
+  unfold ltof in H. intros. induction l.
+  - simpl; intuition.
+  - destruct a; simpl. apply H; auto. left. unfold not; discriminate.
+Qed.
+
+Inductive IsSubtreeOf: Tree -> Tree -> Prop :=
+  | ISO_refl: forall T,
+    IsSubtreeOf T T
+  | ISO_subtree: forall T l a,
+    In T l -> IsSubtreeOf T (T_tr a l)
+  | ISO_trans: forall T T' T'',
+    IsSubtreeOf T T'-> IsSubtreeOf T' T'' ->
+    IsSubtreeOf T T''.
+
+Add Relation (Tree) (@IsSubtreeOf)
+  reflexivity proved by (@ISO_refl)
+  transitivity proved by (@ISO_trans)
+as ISO_relation.
+
+Hint Constructors IsSubtreeOf.
+
+Definition CorrectMoveTopActionConditions Zop : Prop :=
+  match Zop with
+  | T_move n a l =>
+    n <= length l
+  end.
+
+Definition CorrectZipperToTreeConditions (Z : ZipperTree) : Prop :=
+  forall t, In t (snd Z) -> match t with | T_move n a l => n <= length l end.
+
+Hint Unfold CorrectZipperToTreeConditions CorrectMoveTopActionConditions : t_unfold.
+
+Lemma ZipperSubtree: forall t l,
+  CorrectZipperToTreeConditions (t, l) ->
+  IsSubtreeOf t (ZipperToTree (t, l)).
+Proof.
+  intros; generalize dependent t.
+  unfold CorrectZipperToTreeConditions.
+  induction l. intros; auto. intros.
+  remember H as H' eqn:He; clear He.
+  - specialize H with a; simpl in H.
+    destruct a; unfold ZipperToTree in *; simpl in *.
+    transitivity (T_tr a (nth_insert n l0 t)); auto.
+    assert (n <= length l0) by auto.
+    apply nth_insert_representation with (x:=t) in H; firstorder. rewrite H1.
+    constructor. auto with datatypes.
+  - apply IHl. intros. apply H'; auto.
+Qed.
+
+Inductive PropertyOverTree : (Tree -> Prop) -> Tree -> Prop :=
+  | P_nil: forall (P: Tree -> Prop),
+    P T_nil -> PropertyOverTree P T_nil
+  | P_tree: forall (P: Tree -> Prop) T,
+    P T -> (forall T', IsSubtreeOf T' T -> P T') ->
+    PropertyOverTree P T.
+
+Hint Constructors PropertyOverTree.
 
 Lemma ZipperPreserveProperty: forall P T,
   PropertyOverTree P T ->
-  (forall Z, ZipperToTree Z = T -> PropertyOverTree P (fst Z)).
+  (forall Z, CorrectZipperToTreeConditions Z ->
+    ZipperToTree Z = T -> PropertyOverTree P (fst Z)).
 Proof.
-  intros. induction H.
-  - destruct Z as (t, l), t, l; simpl in *; auto.
-    inversion H0.
-    destruct c; simpl in H0. unfold ZipperToTree in H0. simpl in H0.
-    destruct l; simpl in *. discriminate.
-    unfold MoveTopAction in H0.
-  Admitted.
+  induction 1; intros.
+  - assert (e: Z = (T_nil, [])).
+      destruct Z as (t, l), t, l; auto; apply ZipperToTreeNotNil in H1.
+      all: firstorder; try discriminate.
+    rewrite e in *; simpl in *. auto.
+  - destruct T.
+    assert (e: Z = (T_nil, [])).
+      destruct Z as (t, l), t, l; auto; apply ZipperToTreeNotNil in H2.
+      all: firstorder; try discriminate.
+    rewrite e in *; simpl in *. auto.
+  - constructor.
+    assert (e: IsSubtreeOf (fst Z) (ZipperToTree Z)).
+      destruct Z; apply ZipperSubtree; auto.
+    rewrite H2 in e. apply H0 in e; auto.
+  - assert (e: IsSubtreeOf (fst Z) (ZipperToTree Z)).
+      destruct Z; apply ZipperSubtree; auto.
+    rewrite H2 in e.
+    intros. apply H0. transitivity (fst Z); auto.
+Qed.
 
 End TreeZipper.
