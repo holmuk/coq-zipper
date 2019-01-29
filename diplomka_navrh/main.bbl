@@ -1,0 +1,152 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{none/global/}
+    \entry{cowgod}{online}{}
+      \list{language}{1}{%
+        {english}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Cowgod's CHIP-8 Technical Reference}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2018}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#8xy6
+      \endverb
+    \endentry
+    \entry{Wij1973}{book}{useauthor=false}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=27abba5d1363f9a7386a167cd4607ba0}{%
+           family={Wijngaarden},
+           familyi={W\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Amsterdam}%
+      }
+      \list{publisher}{1}{%
+        {IFIP}%
+      }
+      \strng{authornamehash}{978dda922431e81113e57f7e51a77c92}
+      \strng{authorfullhash}{978dda922431e81113e57f7e51a77c92}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labeltitlesource}{title}
+      \field{title}{Revised Report on the Algorithmic Language ALGOL 68}
+      \field{year}{1973}
+    \endentry
+    \entry{Gun1992}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5f5460ff9c13f918f8adff3f560247b3}{%
+           family={Gunter},
+           familyi={G\bibinitperiod},
+           given={C.\bibnamedelimi A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {The MIT Press}%
+      }
+      \strng{namehash}{5f5460ff9c13f918f8adff3f560247b3}
+      \strng{fullhash}{5f5460ff9c13f918f8adff3f560247b3}
+      \strng{authornamehash}{5f5460ff9c13f918f8adff3f560247b3}
+      \strng{authorfullhash}{5f5460ff9c13f918f8adff3f560247b3}
+      \field{sortinit}{3}
+      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780262570954}
+      \field{title}{Semantics of Programming Languages}
+      \field{year}{1992}
+      \field{pages}{441}
+      \range{pages}{1}
+    \endentry
+    \entry{GorSOS}{article}{}
+      \name{author}{1}{}{%
+        {{hash=828bb7fa65ab948d7b9df2b823a801d5}{%
+           family={Plotkin},
+           familyi={P\bibinitperiod},
+           given={Gordon\bibnamedelima D.},
+           giveni={G\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{828bb7fa65ab948d7b9df2b823a801d5}
+      \strng{fullhash}{828bb7fa65ab948d7b9df2b823a801d5}
+      \strng{authornamehash}{828bb7fa65ab948d7b9df2b823a801d5}
+      \strng{authorfullhash}{828bb7fa65ab948d7b9df2b823a801d5}
+      \field{sortinit}{4}
+      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Origins of Structural Operational Semantics}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2018}
+      \field{year}{2004}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://homepages.inf.ed.ac.uk/gdp/publications/Origins_SOS.pdf
+      \endverb
+    \endentry
+    \entry{Hen1990}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e41732915d62ae6ccf0223fe5a49cb72}{%
+           family={Hennessy},
+           familyi={H\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{e41732915d62ae6ccf0223fe5a49cb72}
+      \strng{fullhash}{e41732915d62ae6ccf0223fe5a49cb72}
+      \strng{authornamehash}{e41732915d62ae6ccf0223fe5a49cb72}
+      \strng{authorfullhash}{e41732915d62ae6ccf0223fe5a49cb72}
+      \field{sortinit}{5}
+      \field{sortinithash}{c9df3c9fb8f555dd9201cedc5e343021}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Semantics of Programming Languages}
+      \field{year}{1990}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
