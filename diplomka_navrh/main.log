@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  31 MAR 2019 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  31 MAR 2019 19:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2045,7 +2045,7 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 140.
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 []\T2A/PTSerif-TLF/m/n/14.4 ƒл€ вс€-ких де-ре-вьев $\OML/cmm/m/it/14.4 T\OT1/cm
 r/m/n/14.4 1$\T2A/PTSerif-TLF/m/n/14.4 , $\OML/cmm/m/it/14.4 T\OT1/cmr/m/n/14.4
  2$\T2A/PTSerif-TLF/m/n/14.4 , $\OML/cmm/m/it/14.4 T\OT1/cmr/m/n/14.4 3$ \T2A/P
@@ -2053,15 +2053,21 @@ TSerif-TLF/m/n/14.4 вы-пол-н€-ет-с€
  []
 
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 158.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 158.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 158.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 158.
+(babel)             in language  on input line 157.
 [9]
 
+Package xcolor Warning: Incompatible color definition on input line 158.
+
+
+Package xcolor Warning: Incompatible color definition on input line 158.
+
+
 Package xcolor Warning: Incompatible color definition on input line 159.
 
 
@@ -2077,56 +2083,56 @@ Package xcolor Warning: Incompatible color definition on input line 160.
 Package xcolor Warning: Incompatible color definition on input line 161.
 
 
-Package xcolor Warning: Incompatible color definition on input line 161.
+Package xcolor Warning: Incompatible color definition on input line 166.
 
 
-Package xcolor Warning: Incompatible color definition on input line 162.
+Package xcolor Warning: Incompatible color definition on input line 166.
 
 
-Package xcolor Warning: Incompatible color definition on input line 167.
-
-
-Package xcolor Warning: Incompatible color definition on input line 167.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 []\T2A/PTSerif-TLF/m/n/14.4 ѕусть у нас име-ет-с€ де-ре-во $\OML/cmm/m/it/14.4 
 T$ \T2A/PTSerif-TLF/m/n/14.4 и неко-то-рый пре-ди-кат
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 175--176
+Underfull \hbox (badness 3343) in paragraph at lines 174--175
 \T2A/PTSerif-TLF/m/n/14.4 при необ-хо-ди-мо-сти опре-де-лить сколь угод-но слож
 -ную функ-цию
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
 []\T2A/PTSerif-TLF/m/n/14.4 ƒл€ всех $\OML/cmm/m/it/14.4 P$\T2A/PTSerif-TLF/m/n
 /14.4 , дл€ ко-то-рых $\OML/cmm/m/it/14.4 P\OT1/cmr/m/n/14.4 ([])$\T2A/PTSerif-
 TLF/m/n/14.4 , вы-пол-н€-ет-с€
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 184.
+Package xcolor Warning: Incompatible color definition on input line 183.
 
 
-Package xcolor Warning: Incompatible color definition on input line 184.
+Package xcolor Warning: Incompatible color definition on input line 183.
 
 
-Package xcolor Warning: Incompatible color definition on input line 186.
+Package xcolor Warning: Incompatible color definition on input line 185.
 
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 187.
+(babel)             in language  on input line 186.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 187.
+(babel)             in language  on input line 186.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 187.
+(babel)             in language  on input line 186.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 187.
+(babel)             in language  on input line 186.
 [10]
 
-Package xcolor Warning: Incompatible color definition on input line 201.
+Package xcolor Warning: Incompatible color definition on input line 200.
+
+
+Package xcolor Warning: Incompatible color definition on input line 200.
+
+
+Package xcolor Warning: Incompatible color definition on input line 200.
 
 
 Package xcolor Warning: Incompatible color definition on input line 201.
@@ -2134,67 +2140,49 @@ Package xcolor Warning: Incompatible color definition on input line 201.
 
 Package xcolor Warning: Incompatible color definition on input line 201.
 
-
-Package xcolor Warning: Incompatible color definition on input line 202.
-
-
-Package xcolor Warning: Incompatible color definition on input line 202.
-
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 208.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 208.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 209.
+(babel)             in language  on input line 212.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 209.
+(babel)             in language  on input line 212.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 215.
+(babel)             in language  on input line 217.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 215.
+(babel)             in language  on input line 217.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 215.
+(babel)             in language  on input line 217.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 215.
+(babel)             in language  on input line 217.
 [11]
 
-Package xcolor Warning: Incompatible color definition on input line 217.
+Package xcolor Warning: Incompatible color definition on input line 220.
 
 
-Package xcolor Warning: Incompatible color definition on input line 218.
+Package xcolor Warning: Incompatible color definition on input line 221.
 
 
-Package xcolor Warning: Incompatible color definition on input line 218.
-
-
-Package xcolor Warning: Incompatible color definition on input line 222.
-
-
-Package xcolor Warning: Incompatible color definition on input line 223.
+Package xcolor Warning: Incompatible color definition on input line 221.
 
 
 Package xcolor Warning: Incompatible color definition on input line 225.
 
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 232.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 232.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 238.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 238.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 240.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 240.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 243.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 243.
 
-Package biblatex Warning: Field 'prefixnumber' deprecated. Please use 'labelpre
-fix' instead.
+Package xcolor Warning: Incompatible color definition on input line 226.
 
+
+Package xcolor Warning: Incompatible color definition on input line 228.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 235.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 235.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 241.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 241.
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 243.
 Package babel Info: Redefining russian shorthand "~
@@ -2204,30 +2192,56 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 243.
 [12]
-Underfull \hbox (badness 1325) in paragraph at lines 246--246
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 243.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 243.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 246.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 246.
+
+
+Package biblatex Warning: Field 'prefixnumber' deprecated. Please use 'labelpre
+fix' instead.
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 249--249
 []\T2A/PTSerif-TLF/m/it/14.4 Okasaki C. \T2A/PTSerif-TLF/m/n/14.4 Purely Functi
 onal Data Structures. ^^V 1996. ^^V URL:
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 249--249
+[]\T2A/PTSerif-TLF/m/it/14.4 Team Q. \T2A/PTSerif-TLF/m/n/14.4 QuickChick Refer
+ence Manual. ^^V URL: []$\T2A/PTMono-TLF/m/n/14.4 https : / /
+ []
+
+
+Underfull \hbox (badness 1178) in paragraph at lines 249--249
+\T2A/PTMono-TLF/m/n/14.4 github . com / QuickChick / QuickChick / blob / 8 . 9 
+/
  []
 
 \tf@thm=\write9
 \openout9 = `main.thm'.
 
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 267.
+(babel)             in language  on input line 270.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 267.
+(babel)             in language  on input line 270.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 267.
+(babel)             in language  on input line 270.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 267.
+(babel)             in language  on input line 270.
 [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 267.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 267.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 267.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 267.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 270.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 98E2EABDCE9237365983676294C208A5;2520.
+(rerunfilecheck)             Checksum: C60EA0CAF0E4DC4E02361242A516561D;2656.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2235,13 +2249,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 267.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 270.
  ) 
 Here is how much of TeX's memory you used:
- 36729 strings out of 492995
- 652140 string characters out of 6132704
- 1410445 words of memory out of 5000000
- 39651 multiletter control sequences out of 15000+600000
+ 36738 strings out of 492995
+ 652368 string characters out of 6132704
+ 1410493 words of memory out of 5000000
+ 39657 multiletter control sequences out of 15000+600000
  90045 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,17n,74p,8854b,2223s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2261,10 +2275,10 @@ st/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (13 pages, 174560 bytes).
+Output written on main.pdf (13 pages, 176248 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 227 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 266 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 78 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

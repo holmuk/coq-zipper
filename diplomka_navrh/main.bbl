@@ -116,6 +116,56 @@
       \verb https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
       \endverb
     \endentry
+    \entry{Cormen2002}{mvbook}{}
+      \name{author}{1}{}{%
+        {{hash=9a4c67d2407675eccd23bc8f86407931}{%
+           family={Cormen},
+           familyi={C\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {The MIT Press}%
+      }
+      \strng{namehash}{9a4c67d2407675eccd23bc8f86407931}
+      \strng{fullhash}{9a4c67d2407675eccd23bc8f86407931}
+      \strng{authornamehash}{9a4c67d2407675eccd23bc8f86407931}
+      \strng{authorfullhash}{9a4c67d2407675eccd23bc8f86407931}
+      \field{sortinit}{9}
+      \field{sortinithash}{2999ebab86052e6d71b434385f8b4ed2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to Algorithms}
+      \field{year}{2002}
+    \endentry
+    \entry{QuickChickRM}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5500b2292a91817e99cbabaf0702e395}{%
+           family={Team},
+           familyi={T\bibinitperiod},
+           given={QC},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{5500b2292a91817e99cbabaf0702e395}
+      \strng{fullhash}{5500b2292a91817e99cbabaf0702e395}
+      \strng{authornamehash}{5500b2292a91817e99cbabaf0702e395}
+      \strng{authorfullhash}{5500b2292a91817e99cbabaf0702e395}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{QuickChick Reference Manual}
+      \field{urlday}{12}
+      \field{urlmonth}{3}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://github.com/QuickChick/QuickChick/blob/8.9/QuickChickInterface.v
+      \endverb
+    \endentry
   \endsortlist
 \endrefsection
 \endinput

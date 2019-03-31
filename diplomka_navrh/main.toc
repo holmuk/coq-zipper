@@ -20,16 +20,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{\nonumberline \IeC {\CYRK }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrsftsn } \IeC {\cyrf }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri } Modify}{11}{section*.5}
 \defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline \IeC {\CYRK }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrsftsn } \IeC {\cyrf }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyrishrt } \IeC {\cyrn }\IeC {\cyra }\IeC {\cyrv }\IeC {\cyri }\IeC {\cyrg }\IeC {\cyra }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{11}{section*.6}
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}\IeC {\CYRT }\IeC {\cyre }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyri }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrs } \IeC {\cyri }\IeC {\cyrs }\IeC {\cyrp }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrsftsn }\IeC {\cyrz }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }\IeC {\cyrm } QuickChick}{11}{section.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}\IeC {\CYRO }\IeC {\cyrb }\IeC {\cyrshch }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrz }\IeC {\cyra }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }}{11}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}\IeC {\CYRO }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrt }\IeC {\cyre }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyro }\IeC {\cyrv }}{12}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}\IeC {\CYRI }\IeC {\cyrz }\IeC {\cyrv }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre } OCaml \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{12}{section.4}
+\contentsline {section}{\numberline {4}\IeC {\CYRG }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyrya } \IeC {\cyrv }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrf }\IeC {\cyri }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyrg }\IeC {\cyro } OCaml \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{13}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline \IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrl }\IeC {\cyryu }\IeC {\cyrch }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{12}{section*.6}
+\contentsline {section}{\nonumberline \IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrl }\IeC {\cyryu }\IeC {\cyrch }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{13}{section*.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline \IeC {\CYRS }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyro }\IeC {\cyrk } \IeC {\cyrl }\IeC {\cyri }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyrery }}{13}{section*.7}
+\contentsline {section}{\nonumberline \IeC {\CYRS }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyro }\IeC {\cyrk } \IeC {\cyrl }\IeC {\cyri }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyrery }}{13}{section*.8}
 \defcounter {refsection}{0}\relax 
 \renewcommand {\cftsecpresnum }{{\cyrillictext \CYRP \cyrr \cyri \cyrl \cyro \cyrzh \cyre \cyrn \cyri \cyre } }\addtolength {\cftsecnumwidth }{\widthof {{\cyrillictext \CYRP \cyrr \cyri \cyrl \cyro \cyrzh \cyre \cyrn \cyri \cyre } {}}}

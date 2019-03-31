@@ -112,26 +112,6 @@ Proof.
   auto.
 Qed.
 
-Lemma MoveTop_TreeInvariance: forall Z,
-  ZipperToTree Z = ZipperToTree (MoveTop Z).
-Proof.
-  destruct Z as (t, l), l as [|h]; [|destruct h]; simpl in *; auto.
-Qed.
-
-Lemma MoveDown_TreeInvariance: forall D Z,
-  CorrectMoveDownConditions D Z ->
-  ZipperToTree (MoveDown D Z) = ZipperToTree Z.
-Proof.
-  autounfold with t_unfold in *; destruct Z as (t, l), t, l;
-    simpl; auto; intros.
-  - remember H as H' eqn:Ge; clear Ge.
-    apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R; simpl; auto.
-    rewrite nth_insert_remove; auto.
-  - remember H as H' eqn:Ge; clear Ge.
-    apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R; simpl; auto.
-    rewrite nth_insert_remove; auto.
-Qed.
-
 (* Property *)
 
 Lemma MoveTopActionNotNil: forall T Zop,
@@ -229,6 +209,7 @@ Proof.
     intros. apply H0. transitivity (fst Z); auto.
 Qed.
 
+(* Modify lemmas *)
 Lemma ModifyIdentity: forall Z,
   Modify Z (fun t => t) = Z.
 Proof.
@@ -239,6 +220,63 @@ Lemma ModifyContext: forall Z f,
   f (fst Z) = fst (Modify Z f).
 Proof.
   auto.
+Qed.
+
+(* Navigation lemmas *)
+Definition NthSubtree N (T: Tree) : option Tree :=
+  match T with
+  | T_nil => None
+  | T_tr a l => nth_error l N
+  end.
+
+Lemma MoveTop_TreeInvariance: forall Z,
+  ZipperToTree Z = ZipperToTree (MoveTop Z).
+Proof.
+  destruct Z as (t, l), l as [|h]; [|destruct h]; simpl in *; auto.
+Qed.
+
+Lemma MoveDown_TreeInvariance: forall D Z,
+  CorrectMoveDownConditions D Z ->
+  ZipperToTree (MoveDown D Z) = ZipperToTree Z.
+Proof.
+  autounfold with t_unfold in *; destruct Z as (t, l), t, l;
+    simpl; auto; intros.
+  - remember H as H' eqn:Ge; clear Ge.
+    apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R; simpl; auto.
+    rewrite nth_insert_remove; auto.
+  - remember H as H' eqn:Ge; clear Ge.
+    apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R; simpl; auto.
+    rewrite nth_insert_remove; auto.
+Qed.
+
+Lemma MoveDownCorrectness: forall D Z,
+  CorrectMoveDownConditions D Z ->
+  Some (fst (MoveDown D Z)) = NthSubtree D (fst Z).
+Proof.
+  intros; destruct Z as (t0, l0), t0; simpl.
+  all: unfold CorrectMoveDownConditions in *; simpl in *.
+  - inversion H.
+  - unfold MoveDown; simpl.
+    destruct (nth_error l D) eqn:R; simpl; auto.
+    apply nth_error_None in R. omega.
+Qed.
+
+Lemma MoveTopCorrectness: forall a l Z,
+  CorrectMoveTopConditions Z ->
+  exists h, hd_error (snd Z) = Some h ->
+  CorrectMoveTopActionConditions h ->
+  fst (MoveTop Z) = T_tr a l ->
+  In (fst Z) l.
+Proof.
+  intros. unfold CorrectMoveTopConditions in *.
+  destruct Z as (t0, l0), l0; simpl in *.
+  - contradiction.
+  - exists c. unfold MoveTop in *; simpl in *.
+    unfold CorrectMoveTopActionConditions; intros.
+    unfold MoveTopAction in H2. destruct c; simpl in *.
+    inversion H2. Search (nth_insert).
+    apply (nth_insert_representation n l1 t0) in H1.
+    firstorder. rewrite H3. intuition.
 Qed.
 
 End TreeZipper.
