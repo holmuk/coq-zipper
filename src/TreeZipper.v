@@ -132,18 +132,6 @@ Proof.
     rewrite nth_insert_remove; auto.
 Qed.
 
-Lemma Modify_Identity: forall Z,
-  Modify Z (fun t => t) = Z.
-Proof.
-  destruct Z; auto.
-Qed.
-
-Lemma Context_Modify: forall Z f,
-  f (fst Z) = fst (Modify Z f).
-Proof.
-  auto.
-Qed.
-
 (* Property *)
 
 Lemma MoveTopActionNotNil: forall T Zop,
@@ -239,6 +227,18 @@ Proof.
       destruct Z; apply ZipperSubtree; auto.
     rewrite H2 in e.
     intros. apply H0. transitivity (fst Z); auto.
+Qed.
+
+Lemma ModifyIdentity: forall Z,
+  Modify Z (fun t => t) = Z.
+Proof.
+  destruct Z; auto.
+Qed.
+
+Lemma ModifyContext: forall Z f,
+  f (fst Z) = fst (Modify Z f).
+Proof.
+  auto.
 Qed.
 
 End TreeZipper.
