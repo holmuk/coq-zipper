@@ -16,7 +16,7 @@ Module NatType <: Typ with Definition t := nat.
 Definition t := nat.
 End NatType.
 
-Module TreeZipperOverNat := (TreeZipper.TreeZipper NatType).
+Module TreeZipperOverNat := (TreeZipper.TreeZipperDef NatType).
 Import TreeZipperOverNat.
 
 Instance showTree `{_ : Show } : Show (Tree) :=
