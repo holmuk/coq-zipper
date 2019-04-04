@@ -11,7 +11,7 @@ Import ListNotations.
 Require Import Coq.Structures.Equalities.
 Require Import Auxiliaries.
 
-Module TreeZipper (Import T: Typ).
+Module TreeZipperDef (Import T: Typ).
 
 (*Parameter A : Type.
 *)
@@ -223,7 +223,7 @@ Proof.
 Qed.
 
 (* Navigation lemmas *)
-Definition NthSubtree N (T: Tree) : option Tree :=
+Definition RootSubtree N (T: Tree) : option Tree :=
   match T with
   | T_nil => None
   | T_tr a l => nth_error l N
@@ -251,7 +251,7 @@ Qed.
 
 Lemma MoveDownCorrectness: forall D Z,
   CorrectMoveDownConditions D Z ->
-  Some (fst (MoveDown D Z)) = NthSubtree D (fst Z).
+  Some (fst (MoveDown D Z)) = RootSubtree D (fst Z).
 Proof.
   intros; destruct Z as (t0, l0), t0; simpl.
   all: unfold CorrectMoveDownConditions in *; simpl in *.
@@ -279,4 +279,4 @@ Proof.
     firstorder. rewrite H3. intuition.
 Qed.
 
-End TreeZipper.
+End TreeZipperDef.

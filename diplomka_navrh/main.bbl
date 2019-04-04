@@ -166,6 +166,32 @@
       \verb https://github.com/QuickChick/QuickChick/blob/8.9/QuickChickInterface.v
       \endverb
     \endentry
+    \entry{Pierre2004}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=ce547601c9b81c1d8ce996851cccb458}{%
+           family={Letouzey},
+           familyi={L\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {L'Université de Paris-Sud}%
+      }
+      \list{language}{1}{%
+        {french}%
+      }
+      \strng{namehash}{ce547601c9b81c1d8ce996851cccb458}
+      \strng{fullhash}{ce547601c9b81c1d8ce996851cccb458}
+      \strng{authornamehash}{ce547601c9b81c1d8ce996851cccb458}
+      \strng{authorfullhash}{ce547601c9b81c1d8ce996851cccb458}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{L'extraction de programmes dans l'assistant Coq}
+      \field{type}{phdthesis}
+      \field{year}{2004}
+    \endentry
   \endsortlist
 \endrefsection
 \endinput

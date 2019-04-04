@@ -3404,6 +3404,7 @@
     <bcf:citekey order="8">Okasaki1996</bcf:citekey>
     <bcf:citekey order="9">Cormen2002</bcf:citekey>
     <bcf:citekey order="10">QuickChickRM</bcf:citekey>
+    <bcf:citekey order="11">Pierre2004</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none/global/" type="entry" sortscheme="none" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
