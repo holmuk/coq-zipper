@@ -1,5 +1,0 @@
-[0] Config.pm:354> INFO - This is Biber 2.7
-[0] Config.pm:357> INFO - Logfile is 'main.aux.blg'
-[48] biber-darwin:303> INFO - === Wed Apr 11, 2018, 16:53:12
-[170] Utils.pm:180> ERROR - Cannot find control file 'main.aux.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
-[170] Biber.pm:113> INFO - ERRORS: 1

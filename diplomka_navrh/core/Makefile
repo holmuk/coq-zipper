@@ -1,2 +1,0 @@
-subsystem:
-	cd .. && $(MAKE)

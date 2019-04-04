@@ -13,7 +13,7 @@ Makefile.coq.conf
 .coqdeps.d
 awk.Makefile
 
-# General files
+# Mac Junk
 
 Thumbs.db
 .DS_Store
@@ -27,3 +27,28 @@ Thumbs.db
 *.prof
 *.rej
 *.html
+
+# Latex
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
