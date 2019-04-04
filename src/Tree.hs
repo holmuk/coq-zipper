@@ -2,16 +2,6 @@ module Tree where
 
 import qualified Prelude
 
-fst :: ((,) a1 a2) -> a1
-fst p =
-  case p of {
-   (,) x _ -> x}
-
-snd :: ((,) a1 a2) -> a2
-snd p =
-  case p of {
-   (,) _ y -> y}
-
 nth_error :: (([]) a1) -> int -> Prelude.Maybe a1
 nth_error l n =
   (fun fO fS n -> if n=0 then fO () else fS (n-1))
@@ -93,17 +83,22 @@ moveTopAction t zop =
 
 moveTop :: ZipperTree -> ZipperTree
 moveTop z =
-  case snd z of {
+  case case z of {
+        (,) _ y -> y} of {
    ([]) -> z;
-   (:) h t -> (,) (moveTopAction (fst z) h) t}
+   (:) h t -> (,) (moveTopAction (case z of {
+                                   (,) x _ -> x}) h) t}
 
 moveDown :: Direction -> ZipperTree -> ZipperTree
 moveDown d z =
-  case fst z of {
+  case case z of {
+        (,) x _ -> x} of {
    t_nil -> z;
    t_tree a l ->
     case nth_error l d of {
-     Prelude.Just t -> (,) t ((:) (move d a (nth_remove d l)) (snd z));
+     Prelude.Just t -> (,) t ((:) (move d a (nth_remove d l))
+      (case z of {
+        (,) _ y -> y}));
      Prelude.Nothing -> z}}
 
 nodesOf :: tree -> ([]) tree
@@ -114,14 +109,18 @@ nodesOf t =
 
 modify :: ZipperTree -> (tree -> tree) -> ZipperTree
 modify z f =
-  (,) (f (fst z)) (snd z)
+  (,) (f (case z of {
+           (,) x _ -> x})) (case z of {
+                             (,) _ y -> y})
 
 zipperToTree :: ZipperTree -> tree
 zipperToTree z =
-  fold_left moveTopAction (snd z) (fst z)
+  fold_left moveTopAction (case z of {
+                            (,) _ y -> y}) (case z of {
+                                             (,) x _ -> x})
 
-nthSubtree :: int -> tree -> Prelude.Maybe tree
-nthSubtree n t =
+rootSubtree :: int -> tree -> Prelude.Maybe tree
+rootSubtree n t =
   case t of {
    t_nil -> Prelude.Nothing;
    t_tree _ l -> nth_error l n}

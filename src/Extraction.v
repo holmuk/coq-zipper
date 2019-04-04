@@ -22,6 +22,8 @@ Extraction Language Haskell.
 Extract Inductive Tree => "tree" [ "t_nil" "t_tree" ].
 Extract Inductive Context => "cntx" [ "move" ].
 
+Extraction Inline fst snd.
+
 End HaskellExtraction.
 
 Extraction "Tree.hs" HaskellExtraction.
