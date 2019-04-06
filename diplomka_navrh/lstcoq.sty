@@ -4,8 +4,6 @@
 %
 % Anything betweeen $ becomes LaTeX math mode
 mathescape=true,
-%
-% Comments may or not include Latex commands
 texcl=false, 
 %
 % Vernacular commands
@@ -15,11 +13,11 @@ morekeywords=[1]{Section, Module, End, Require, Import, Export,
   Bind, Delimit, Definition, Let, Ltac, Fixpoint, CoFixpoint, Add,
   Morphism, Relation, Implicit, Arguments, Unset, Contextual,
   Strict, Prenex, Implicits, Inductive, CoInductive, Record,
-  Structure, Canonical, Coercion, Context, Class, Global, Instance,
+  Structure, Canonical, Coercion, Extract, Class, Global, Instance,
   Program, Infix, Theorem, Lemma, Corollary, Proposition, Fact,
   Remark, Example, Proof, Goal, Save, Qed, Defined, Hint, Resolve,
   Rewrite, View, Search, Show, Print, Printing, All, Eval, Check,
-  Projections, inside, outside, Def},
+  Projections, inside, outside, Def, Inline, Extraction},
 %
 % Gallina
 morekeywords=[2]{forall, exists, exists2, fun, fix, cofix, struct,
@@ -36,14 +34,12 @@ morekeywords=[4]{pose, set, move, case, elim, apply, clear, hnf,
   unlock, compute, ring, field, fourier, replace, fold, unfold,
   change, cutrewrite, simpl, have, suff, wlog, suffices, without,
   loss, nat_norm, assert, cut, trivial, revert, bool_congr, nat_congr,
-  symmetry, transitivity, auto, split, left, right, autorewrite},
-%
-% Terminators
-morekeywords=[5]{by, done, exact, reflexivity, tauto, romega, omega,
+  symmetry, transitivity, auto, split, left, right, autorewrite,
+  by, done, exact, reflexivity, tauto, romega, omega,
   assumption, solve, contradiction, discriminate},
 %
 % Control
-morekeywords=[6]{do, last, first, try, idtac, repeat},
+morekeywords=[5]{do, last, first, try, idtac, repeat},
 %
 % Comments delimiters, we do turn this off for the manual
 morecomment=[s]{(*}{*)},
@@ -53,7 +49,7 @@ showstringspaces=false,
 %
 % String delimiters
 morestring=[b]",
-morestring=[d],
+morestring=[d]",
 %
 % Size of tabulations
 tabsize=3,
@@ -83,54 +79,34 @@ keywordstyle=[1]{\ttfamily\color{dkviolet}},
 % Style for gallina keywords
 keywordstyle=[2]{\ttfamily\color{dkgreen}},
 % Style for sorts keywords
-keywordstyle=[3]{\ttfamily\color{ltblue}},
+keywordstyle=[3]{\ttfamily\color{blue}},
 % Style for tactics keywords
 keywordstyle=[4]{\ttfamily\color{dkblue}},
-% Style for terminators keywords
 keywordstyle=[5]{\ttfamily\color{dkred}},
-%Style for iterators
-%keywordstyle=[6]{\ttfamily\color{dkpink}},
 % Style for strings
 stringstyle=\ttfamily,
 % Style for comments
 commentstyle={\ttfamily\color{dkgreen}},
-%
 %moredelim=**[is][\ttfamily\color{red}]{/&}{&/},
 literate=
     {\\forall}{{\color{dkgreen}{$\forall\;$}}}1
     {\\exists}{{$\exists\;$}}1
-    {BT_nil}{{$\emptyset\;$}}1
-    {lte}{{$\leqslant\;$}}1
-    {lte_bool}{{$\leqslant_{bool}\;$}}1
-    {BST_StrongProperty}{{$\star\;$}}1
-    {In_tree}{{$\in\;$}}1
     {<-}{{$\leftarrow\;$}}1
     {=>}{{$\Rightarrow\;$}}1
     {==}{{\code{==}\;}}1
     {==>}{{\code{==>}\;}}1
-%    {:>}{{\code{:>}\;}}1
     {->}{{$\rightarrow\;$}}1
     {<->}{{$\leftrightarrow\;$}}1
-    {<==}{{$\leq\;$}}1
     {\#}{{$^\star$}}1 
     {\\o}{{$\circ\;$}}1 
-%    {\@}{{$\cdot$}}1 
     {\/\\}{{$\wedge\;$}}1
     {\\\/}{{$\vee\;$}}1
-%    {++}{{++}}1
     {~}{{$\lnot$}}1
     {\@\@}{{$@$}}1
     {\\mapsto}{{$\mapsto\;$}}1
     {\\hline}{{\rule{\linewidth}{0.5pt}}}1
 %
 }[keywords,comments,strings]
-
-\lstnewenvironment{coq}{\lstset{language=Coq }}{}
-
-% pour inliner dans le texte
-\def\coqe{\lstinline[language=Coq, basicstyle=\small]}
-% pour inliner dans les tableaux / displaymath...
-\def\coqes{\lstinline[language=Coq, basicstyle=\scriptsize]}
 
 %%% Local Variables: 
 %%% mode: latex
