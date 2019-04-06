@@ -3398,13 +3398,14 @@
     <bcf:citekey order="2">Huet1997</bcf:citekey>
     <bcf:citekey order="3">McBride2009</bcf:citekey>
     <bcf:citekey order="4">McBride2009</bcf:citekey>
-    <bcf:citekey order="5">Okasaki1996</bcf:citekey>
-    <bcf:citekey order="6">Huet1997</bcf:citekey>
-    <bcf:citekey order="7">Okasaki1996</bcf:citekey>
+    <bcf:citekey order="5">CoqManual</bcf:citekey>
+    <bcf:citekey order="6">Okasaki1996</bcf:citekey>
+    <bcf:citekey order="7">Huet1997</bcf:citekey>
     <bcf:citekey order="8">Okasaki1996</bcf:citekey>
-    <bcf:citekey order="9">Cormen2002</bcf:citekey>
-    <bcf:citekey order="10">QuickChickRM</bcf:citekey>
-    <bcf:citekey order="11">Pierre2004</bcf:citekey>
+    <bcf:citekey order="9">Okasaki1996</bcf:citekey>
+    <bcf:citekey order="10">Cormen2002</bcf:citekey>
+    <bcf:citekey order="11">QuickChickRM</bcf:citekey>
+    <bcf:citekey order="12">Pierre2004</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none/global/" type="entry" sortscheme="none" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
