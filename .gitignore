@@ -29,26 +29,10 @@ Thumbs.db
 *.html
 
 # Latex
-*.aux
-*.glo
-*.idx
-*.log
-*.toc
-*.ist
-*.acn
-*.acr
-*.alg
-*.bbl
-*.blg
-*.dvi
-*.glg
-*.gls
-*.ilg
-*.ind
-*.lof
-*.lot
-*.maf
-*.mtc
-*.mtc1
-*.out
-*.synctex.gz
+/diplomka_navrh/**
+!/diplomka_navrh/core/*.tex
+!/diplomka_navrh/*.tex
+!/diplomka_navrh/*.sty
+!/diplomka_navrh/*.bib
+!/diplomka_navrh/*.pdf
+!/diplomka_navrh/*.txt
