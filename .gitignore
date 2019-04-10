@@ -6,7 +6,7 @@
 *.glob
 *.crashcoqide
 .coq-native
-Makefile.coq
+Makefile.coq*
 *.aux
 CoqMakefile.conf
 Makefile.coq.conf

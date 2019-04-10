@@ -91,11 +91,11 @@ Proof.
   - remember H as H' eqn:Ge; clear Ge.
     apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R.
     simpl. rewrite nth_insert_remove; auto.
-  - contradiction.
+    contradiction.
   - remember H as H' eqn:Ge; clear Ge.
     apply nth_error_Some in H. destruct (nth_error l0 D) eqn:R.
     simpl. rewrite nth_insert_remove; auto.
-  - destruct c; simpl. exfalso. apply H; auto.
+    destruct c; simpl. exfalso. apply H; auto.
 Qed.
 
 Definition Modify (Z: ZipperTree) (f: Tree -> Tree) : ZipperTree :=
@@ -172,7 +172,7 @@ Proof.
     assert (n <= length l0) by auto.
     apply nth_insert_representation with (x:=tr) in H; firstorder. rewrite H1.
     constructor. auto with datatypes.
-  - apply IHl. intros. apply H'; auto.
+    apply IHl. intros. apply H'; auto.
 Qed.
 
 Inductive PropertyOverTree : (Tree -> Prop) -> Tree -> Prop :=
@@ -199,14 +199,14 @@ Proof.
       destruct Z as (t, l), t, l; auto; apply ZipperToTreeNotNil in H2.
       all: firstorder; try discriminate.
     rewrite e in *; simpl in *. auto.
-  - constructor.
-    assert (e: IsSubtreeOf (fst Z) (ZipperToTree Z)).
+    constructor.
+    + assert (e: IsSubtreeOf (fst Z) (ZipperToTree Z)).
       destruct Z; apply ZipperSubtree; auto.
-    rewrite H2 in e. apply H0 in e; auto.
-  - assert (e: IsSubtreeOf (fst Z) (ZipperToTree Z)).
+      rewrite H2 in e. apply H0 in e; auto.
+    + assert (e: IsSubtreeOf (fst Z) (ZipperToTree Z)).
       destruct Z; apply ZipperSubtree; auto.
-    rewrite H2 in e.
-    intros. apply H0. transitivity (fst Z); auto.
+      rewrite H2 in e.
+      intros. apply H0. transitivity (fst Z); auto.
 Qed.
 
 (* Modify lemmas *)

@@ -3,12 +3,7 @@
   Various auxiliary things
 *)
 
-Require Import Nat List Bool Arith Omega.
-From QuickChick Require Import QuickChick.
-Import ListNotations.
-Import QcDefaultNotation. Open Scope qc_scope.
-Import GenLow GenHigh.
-
+Require Import Nat Bool Arith Omega.
 Require Import Coq.Structures.Equalities.
 Require Import Coq.Arith.Wf_nat.
 
@@ -20,6 +15,8 @@ Require Import Coq.Arith.Wf_nat.
   are passed in.
 *)
 
+Require Import List.
+Import ListNotations.
 Module NthInserterRemover (Import T : Typ).
 
 Definition A := T.t.
@@ -36,7 +33,7 @@ Fixpoint nth_remove n l : list A :=
   | S n', h::t => h :: nth_remove n' t
   end.
 
-Lemma nth_remove_length: forall n l,
+Lemma nth_remove_length: forall n (l: list A),
   n < length l ->
   length (nth_remove n l) = (length l) - 1.
 Proof.
