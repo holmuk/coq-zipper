@@ -1,0 +1,164 @@
+\documentclass{beamer}
+\usetheme{AnnArbor}
+\usecolortheme{spruce}
+
+\usepackage [T2A] {fontenc}   % Кириллица в PDF файле
+\usepackage [utf8] {inputenc} % Кодировка текста: utf-8
+\usepackage [russian] {babel} % Переносы, лигатуры
+
+\usepackage{fancyvrb}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+
+\usetikzlibrary{arrows}
+
+\newcommand{\tbttr}{T\_tr}
+\newcommand{\tcoq}{Coq}
+\newcommand{\tqc}{QuickChick}
+
+\setbeamerfont{institute}{size=\normalsize}
+
+\title[ ]{Верификация структуры данных <<зиппер>>}
+\author[Грахов П.]{Грахов Павел, ПМИ}
+\institute[ИВЭ ЮФУ]{Южный федеральный университет\\
+Кафедра информатики и вычислительной техники\\
+\vspace{0.5cm}
+Научный руководитель --- ст.~преп. В.Н.~Брагилевский}
+\date[2019]{Ростов-на-Дону\\2019}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Постановка задачи
+\begin{frame}
+\frametitle{Постановка задачи}
+\begin{itemize}
+\item Формальная верификация алгоритмов (Coq)
+\item Разработка надежного ПО
+\item Тестирование алгоритмов и ПО
+\item Алгоритмы $\rightarrow$ программы
+
+\vspace{0.5cm}
+\item {\bf Задача:} \\ Разработать для некоторой структуры данных Coq-проект, содержащий:
+\begin{itemize}
+\item Формализацию исходной структуры данных
+\item Доказательство ее корректности
+\item Тестирование
+\item Генератор кода
+\end{itemize}
+В качестве исходной структуры выбран <<зиппер>> для дерева
+\end{itemize}
+\end{frame}
+
+%Зиппер
+\begin{frame}
+\frametitle{Формализация <<зиппера>>}
+\begin{itemize}
+\item Пара курсор-контекст $(Z_T, Z_C)$
+\item Введенные операции
+\begin{itemize}
+\item \textbf{MoveTop\ Z}
+\item \textbf{MoveDown\ d\ Z}
+\item \textbf{ZipperToTree\ Z}
+\item \textbf{TreeToZipper\ T}
+\item \textbf{Modify\ Z\ f}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%Теоремы
+\begin{frame}
+\frametitle{Теоремы о <<зиппере>>}
+\begin{itemize}
+\item Операции над зиппером сохраняют свойства исходного дерева
+\item Модификация курсора не меняет контекст
+\item Функции навигации не меняют исходное дерево
+\end{itemize}
+\end{frame}
+
+%Coq
+\begin{frame}
+\frametitle{Coq-формализация}
+\begin{itemize}
+\item Обработка ошибок усложняет доказательства
+\item Использование автоматизации
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Обработка ошибок}
+\begin{itemize}
+\item Проверяющий предикат
+\begin{verbatim}
+Definition CorrectMoveDownConditions D Z := ...
+\end{verbatim}
+\item Разные версии функции
+\begin{verbatim}
+Definition MoveDown D Z : ZipperTree := ...
+Definition CheckAndMoveDown D Z :
+    option ZipperTree := ...
+Lemma SomethingAboutMoveDown:
+    CorrectMoveDownConditions D Z -> ...
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Автоматизация}
+\begin{itemize}
+\item Использование специфических тактик (как \texttt{omega} либо \texttt{ring})
+\item Механизм подсказок (\texttt{Hint})
+\item Изменение конфигурации ядра (\texttt{Add Relation}, \texttt{Transparent})
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Тестирование}
+\begin{itemize}
+\item Возможно, теорема неверна?
+\item Тестирование на большом количестве входных данных: QuickChick
+\end{itemize}
+\begin{verbatim}
+Definition genInput : G (nat * (list nat)) :=
+  genPair (choose (0, 100)) (listOf (choose (0, 100))).
+Definition qc_test_insert_prop (nl: prod nat (list nat)) :=
+  nth_insert_prop (fst nl) (snd nl).
+QuickChick (forAll genInput qc_test_insert_prop).
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Генерация кода}
+\begin{itemize}
+\item Выходной язык: Haskell
+\item Прямая трансляция из Coq-кода будет работать \textbf{очень медленно}
+\item Необходимы оптимизации (возможно, в ущерб формальной корректности)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Оптимизация генерации кода}
+\begin{itemize}
+\item Использование стандартных типов данных Haskell (\texttt{Integer})
+\item \texttt{Inline} для простых определений
+\end{itemize}
+\end{frame}
+
+% Полученные результаты
+\begin{frame}
+\frametitle{Полученные результаты}
+\begin{itemize}
+\item Доказана корректность <<зиппер>> для древовидных структур
+\item Построен верифицированный генератор Haskell-кода для <<зиппера>>
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
