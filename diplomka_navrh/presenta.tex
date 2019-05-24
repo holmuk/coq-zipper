@@ -12,18 +12,14 @@
 \usepackage{stmaryrd}
 \usepackage{mathrsfs}
 
-\usetikzlibrary{arrows}
-
-\newcommand{\tbttr}{T\_tr}
-\newcommand{\tcoq}{Coq}
-\newcommand{\tqc}{QuickChick}
+\usetikzlibrary{arrows, positioning}
 
 \setbeamerfont{institute}{size=\normalsize}
 
-\title[ ]{Верификация структуры данных <<зиппер>>}
+\title[ ]{Формальная верификация структуры данных <<зиппер>>}
 \author[Грахов П.]{Грахов Павел, ПМИ}
 \institute[ИВЭ ЮФУ]{Южный федеральный университет\\
-Кафедра информатики и вычислительной техники\\
+Кафедра информатики и вычислительного эксперимента\\
 \vspace{0.5cm}
 Научный руководитель --- ст.~преп. В.Н.~Брагилевский}
 \date[2019]{Ростов-на-Дону\\2019}
@@ -33,45 +29,118 @@
 \frame{\titlepage}
 
 % Постановка задачи
+%\begin{frame}
+%\frametitle{Постановка задачи}
+%\begin{itemize}
+%\item Формальная верификация алгоритмов (Coq)
+%\item Разработка надежного ПО
+%\item Тестирование алгоритмов и ПО
+%\item Алгоритмы $\rightarrow$ программы
+%
+%\vspace{0.5cm}
+%\item {\bf Задача:} \\ Разработать для некоторой структуры данных Coq-проект, содержащий:
+%\begin{itemize}
+%\item Формализацию исходной структуры данных
+%\item Доказательство ее корректности
+%\item Тестирование
+%\item Генератор кода
+%\end{itemize}
+%В качестве исходной структуры выбран <<зиппер>> для дерева
+%\end{itemize}
+%\end{frame}
+
 \begin{frame}
 \frametitle{Постановка задачи}
-\begin{itemize}
-\item Формальная верификация алгоритмов (Coq)
-\item Разработка надежного ПО
-\item Тестирование алгоритмов и ПО
-\item Алгоритмы $\rightarrow$ программы
 
-\vspace{0.5cm}
-\item {\bf Задача:} \\ Разработать для некоторой структуры данных Coq-проект, содержащий:
-\begin{itemize}
-\item Формализацию исходной структуры данных
-\item Доказательство ее корректности
-\item Тестирование
-\item Генератор кода
-\end{itemize}
-В качестве исходной структуры выбран <<зиппер>> для дерева
-\end{itemize}
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=blue!20, text centered, rounded corners]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 2cm, auto]
+\node[mnode, fill=white] (huet) {Статья о <<Зиппер>>};
+\node[mnode, below left = of huet, text width = 1cm] (coq) {Coq};
+\node[module, below right = of huet, text width = 1cm] (m) {?};
+\node[module, below of = huet, node distance = 4cm] (h) {Haskell};
+
+\draw[blue, dashed] (-5, -3)  rectangle (5, -1);
+\draw[darrow] (m) -- (coq);
+\draw[marrow] (huet) --  (h); 
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Общая схема}
+
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=blue!20, text centered, rounded corners]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 2cm, auto]
+\node[mnode] (list) {*.v};
+\node[mnode, right of = list, node distance = 3cm] (aux) {*.v};
+\node[mnode, right of = aux, node distance = 3cm] (all) {*.v};
+\node[mnode, below of = aux] (zip) {TreeZipper.v};
+\node[module, right of = zip, node distance = 6cm] (qc) {QuickChick};
+
+\node[text centered, below of = zip] (ex) {Extraction.v};
+\node[module, below of = ex] (has) {Haskell};
+
+\draw[darrow] (list) -- (aux);
+\draw[darrow] (aux) -- (all);
+\draw[marrow] (aux) -- (zip);
+\draw[marrow] (all) -- (zip);
+\draw[darrow] (zip) -- (qc);
+\draw[pc] (zip) -- (ex);
+\draw[marrow] (ex) -- (has);
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
 %Зиппер
-\begin{frame}
-\frametitle{Формализация <<зиппера>>}
-\begin{itemize}
-\item Пара курсор-контекст $(Z_T, Z_C)$
-\item Введенные операции
-\begin{itemize}
-\item \textbf{MoveTop\ Z}
-\item \textbf{MoveDown\ d\ Z}
-\item \textbf{ZipperToTree\ Z}
-\item \textbf{TreeToZipper\ T}
-\item \textbf{Modify\ Z\ f}
-\end{itemize}
-\end{itemize}
+\begin{frame}[fragile]
+\frametitle{<<Зиппер>>}
+\begin{figure}[H]
+\centering
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  arn_r/.style = {treenode, circle, black, draw=black, 
+    text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+}
+
+\begin{tikzpicture}[->,>=stealth',level/.style={sibling distance = 2cm/#1,
+  level distance = 2cm}] 
+\node [arn_r] {1}
+    child{ node [arn_r] {2} 
+            child{ node [arn_r] {4} 
+            }
+            child{ node [arn_r] {5}
+            }                            
+    }
+    child{ node [arn_r] {3}
+            child{ node [arn_r] {6} 
+            }
+		}
+	child{ node [arn_r] {4}
+		}
+; 
+\draw[red, dashed] (-3,-5) rectangle (-1, -1);
+\end{tikzpicture}
+\caption{Zipper $(Z_T, Z_C)$}
+\end{figure}
 \end{frame}
 
 %Теоремы
 \begin{frame}
-\frametitle{Теоремы о <<зиппере>>}
+\frametitle{<<Зиппер>>}
 \begin{itemize}
 \item Операции над зиппером сохраняют свойства исходного дерева
 \item Модификация курсора не меняет контекст
@@ -79,71 +148,130 @@
 \end{itemize}
 \end{frame}
 
-%Coq
-\begin{frame}
-\frametitle{Coq-формализация}
-\begin{itemize}
-\item Обработка ошибок усложняет доказательства
-\item Использование автоматизации
-\end{itemize}
-\end{frame}
-
 \begin{frame}[fragile]
 \frametitle{Обработка ошибок}
-\begin{itemize}
-\item Проверяющий предикат
-\begin{verbatim}
-Definition CorrectMoveDownConditions D Z := ...
-\end{verbatim}
-\item Разные версии функции
-\begin{verbatim}
-Definition MoveDown D Z : ZipperTree := ...
-Definition CheckAndMoveDown D Z :
-    option ZipperTree := ...
-Lemma SomethingAboutMoveDown:
-    CorrectMoveDownConditions D Z -> ...
-\end{verbatim}
-\end{itemize}
+
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=blue!20, text centered, rounded corners]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, -latex, shorten >=0.1cm, shorten <= 0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 1cm, auto]
+\node[mnode] (cond) {CorrectMoveDownConditions};
+\node[mnode, below of = cond] (coqfun) {MoveDown};
+\node[mnode, below of = coqfun] (lemma) {Lemma};
+\node[module, below of = lemma, node distance = 4cm] {\shortstack{Haskell\\ MoveDown}};
+
+\node[mnode, fill = white!20, dashed, right of = coqfun, node distance = 6cm] (tmp) {CheckAndMoveDown};
+
+\draw[blue, dashed] (-3,-2.5) rectangle (3, 0.5);
+
+\draw[marrow, shorten >=-2.5cm] (tmp) -- (ex.north);
+\draw[marrow, shorten <=1cm, dashed] (coqfun) -- (tmp);
+
+\end{tikzpicture}
+\end{figure}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Автоматизация}
-\begin{itemize}
-\item Использование специфических тактик (как \texttt{omega} либо \texttt{ring})
-\item Механизм подсказок (\texttt{Hint})
-\item Изменение конфигурации ядра (\texttt{Add Relation}, \texttt{Transparent})
-\end{itemize}
+
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=white!20, rounded corners]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 2cm, auto]
+\node[mnode] (kernel) {\texttt{\shortstack{Hint Unfold ... \\Opaque mod}}};
+\node[mnode, fill=blue!20, below of = kernel] (lemma) {\texttt{Lemma ...}};
+\node[module, right of = lemma, node distance = 4cm] (m) {\shortstack{omega\\ ring}};
+
+\node[above of = kernel, node distance = 0.8cm] {<<Очевидные>> свойства};
+\node[above of = m, node distance = 0.8cm] {Специфичные модули};
+\draw[marrow] (kernel) -- (lemma);
+\draw[marrow] (m) -- (lemma);
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Тестирование}
-\begin{itemize}
-\item Возможно, теорема неверна?
-\item Тестирование на большом количестве входных данных: QuickChick
-\end{itemize}
-\begin{verbatim}
-Definition genInput : G (nat * (list nat)) :=
-  genPair (choose (0, 100)) (listOf (choose (0, 100))).
-Definition qc_test_insert_prop (nl: prod nat (list nat)) :=
-  nth_insert_prop (fst nl) (snd nl).
-QuickChick (forAll genInput qc_test_insert_prop).
-\end{verbatim}
+
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=blue!20, text centered, rounded corners, text width=3cm]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <= 0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 2cm, auto]
+\node[mnode] (l1) {\shortstack{Lemma\\ Proof ???}};
+\node[mnode, below of = l1] (l2) {\shortstack{Lemma\\ Proof ???}};
+\node[text centered, text width = 3cm, below of = l2] (l3) {\textbf{...}};
+\node[mnode, below of = l3] (final) {\shortstack{Lemma\\ Proof !!!}};
+
+\node[module, right of = l1, node distance = 4cm] (qc1) {QuickChick};
+\node[module, right of = l2, node distance = 4cm] (qc2) {QuickChick};
+\node[module, right of = l3, node distance = 4cm] (qc3) {QuickChick};
+
+\node[draw, circle, left of = l1, node distance = 3cm] (f) {$f$};
+
+\draw[darrow, dashed] (f) -- (l1);
+\draw[marrow] (l1) -- (qc1);
+\draw[marrow] (l2) -- (qc2);
+\draw[marrow] (l3) -- (qc3);
+
+\draw[marrow] (qc1) -- (l2);
+\draw[marrow] (qc2) -- (l3);
+\draw[marrow] (qc3) -- (final);
+
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Генерация кода}
 \begin{itemize}
-\item Выходной язык: Haskell
-\item Прямая трансляция из Coq-кода будет работать \textbf{очень медленно}
-\item Необходимы оптимизации (возможно, в ущерб формальной корректности)
-\end{itemize}
-\end{frame}
+\item Так будет медленно
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=blue!20, text centered, rounded corners, text width=3cm]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <= 0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 4cm, auto]
+\node[mnode] (l1) {Coq};
+\node[mnode, fill=white!20, right of = l1] (l2) (ex) {Extract};
+\node[module, right of = ex, fill=red] (h) {Haskell};
 
-\begin{frame}[fragile]
-\frametitle{Оптимизация генерации кода}
-\begin{itemize}
-\item Использование стандартных типов данных Haskell (\texttt{Integer})
-\item \texttt{Inline} для простых определений
+\draw[marrow] (l1) -- (ex);
+\draw[marrow] (ex) -- (h);
+\end{tikzpicture}
+\end{figure}
+
+\item Нужно контролировать процесс
+\begin{figure}[H]
+\centering
+\tikzstyle{mnode} = [rectangle, draw, fill=blue!20, text centered, rounded corners, text width=3cm]
+\tikzstyle{module} = [rectangle, draw, fill=red!20, text centered, rounded corners]
+\tikzstyle{darrow} = [draw, thick, <->, shorten >=0.1cm, shorten <=0.1cm]
+\tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <= 0.1cm]
+\tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
+\begin{tikzpicture}[node distance = 4cm, auto]
+\node[mnode] (l1) {Coq};
+\node[mnode, fill=white!20, right of = l1] (l2) (ex) {\shortstack{$\mathbb{Z} \rightarrow \texttt{Integer}$\\ \texttt{Inline ...} \\ Extract}};
+\node[module, right of = ex] (h) {Haskell};
+
+\draw[marrow] (l1) -- (ex);
+\draw[marrow] (ex) -- (h);
+\end{tikzpicture}
+\end{figure}
 \end{itemize}
 \end{frame}
 
