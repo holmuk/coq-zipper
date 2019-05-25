@@ -60,12 +60,12 @@
 \tikzstyle{marrow} = [draw, thick, ->, shorten >=0.1cm, shorten <=0.1cm]
 \tikzstyle{pc} = [draw, thick, -, shorten >=0.1cm, shorten <=0.1cm]
 \begin{tikzpicture}[node distance = 2cm, auto]
-\node[mnode, fill=white] (huet) {Статья о <<Зиппер>>};
+\node[mnode, fill=white] (huet) {\shortstack{Статья о <<Зиппер>>\\ \textbf{<<The Zipper>>} \\ \textit{G\'{e}rard Huet, INRIA, 1997}}};
 \node[mnode, below left = of huet, text width = 1cm] (coq) {Coq};
 \node[module, below right = of huet, text width = 1cm] (m) {?};
 \node[module, below of = huet, node distance = 4cm] (h) {Haskell};
 
-\draw[blue, dashed] (-5, -3)  rectangle (5, -1);
+\draw[blue, dashed] (-5, -3)  rectangle (5, -2);
 \draw[darrow] (m) -- (coq);
 \draw[marrow] (huet) --  (h); 
 \end{tikzpicture}
